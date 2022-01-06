@@ -1,3 +1,6 @@
+//697. 数组的度
+//https://leetcode-cn.com/problems/degree-of-an-array/
+
 package week2
 
 //数组元素统计信息
