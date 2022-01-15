@@ -5,18 +5,20 @@ import (
 )
 
 type chkHelper struct {
-	nums  int     //元素个数
+	size  int     //结点个数
 	inDeg []int   //入度数组
 	toArr [][]int //有向图的出边数组
 }
 
 //检查给定的数据是否一棵有根树
-//树的根结点入度数为零
+//根结点没有父结点，入度数为零
 //子结点有且仅有一个父结点，即子结点的入度数只能为一
 func (this *chkHelper) isTree(excludeEdge []int) bool {
+	//根结点
+	root := 0
+
 	//遍历入度数组，查找根结点(入度数=0)
-	var root int
-	for i := 1; i <= this.nums; i++ {
+	for i := 1; i <= this.size; i++ {
 		deg := this.inDeg[i]
 
 		//排除掉一条边，将其入度减一
@@ -45,7 +47,7 @@ func (this *chkHelper) isTree(excludeEdge []int) bool {
 	}
 
 	//标记结点是否已走过
-	visited := make([]bool, this.nums+1)
+	visited := make([]bool, this.size+1)
 
 	//树遍历走过的节点数量
 	visCnt := 0
@@ -76,11 +78,11 @@ func (this *chkHelper) isTree(excludeEdge []int) bool {
 	}
 
 	//遍历结束，如果已走结点数等于总结点数，则说明是有效的树
-	return visCnt == this.nums
+	return visCnt == this.size
 }
 
 func findRedundantDirectedConnection(edges [][]int) []int {
-	//结点数，n个节点n条边
+	//结点数，源数据为n个节点n条边
 	n := len(edges)
 
 	inDeg := make([]int, n+1)   //入度数组
