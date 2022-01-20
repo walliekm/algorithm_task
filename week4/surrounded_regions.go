@@ -28,8 +28,7 @@ func solve(board [][]byte) {
 
 	//广度优先遍历连通字符为O的块
 	q := list.New()
-	var bfs func(i, j int)
-	bfs = func(i, j int) {
+	bfs := func(i, j int) {
 		isSurrounded := true //是否有效的被包围区域
 		idxList := []*idx{}  //包围区域内的元素下标
 		visited[i][j] = true
