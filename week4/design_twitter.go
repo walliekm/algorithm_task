@@ -82,13 +82,13 @@ func (this *Twitter) GetNewsFeed(userId int) []int {
 
 	//初始化timeline列表，从自己和所有关注者里分别获取最新一条推文，加入列表
 	var tl timeline
-	if this.userMap[userId].tweets.nextTweet != nil {
-		tl = append(tl, this.userMap[userId].tweets.nextTweet)
+	if t := this.userMap[userId].tweets.nextTweet; t != nil {
+		tl = append(tl, t)
 	}
 
 	for fuid := range this.userMap[userId].followed {
-		if this.userMap[fuid].tweets.nextTweet != nil {
-			tl = append(tl, this.userMap[fuid].tweets.nextTweet)
+		if t := this.userMap[fuid].tweets.nextTweet; t != nil {
+			tl = append(tl, t)
 		}
 	}
 
