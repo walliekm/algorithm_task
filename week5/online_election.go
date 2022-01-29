@@ -36,7 +36,7 @@ func Constructor(persons []int, times []int) TopVotedCandidate {
 }
 
 func (this *TopVotedCandidate) Q(t int) int {
-	//二分查找，查找第一个 <=t 的位置，时间复杂度为: O(LogN)
+	//二分查找，查找times数组里最后一个 <=t 的位置，时间复杂度为: O(LogN)
 	left, right := 0, len(this.times)-1
 	for left < right {
 		mid := (left + right + 1) / 2
