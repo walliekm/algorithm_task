@@ -17,3 +17,10 @@ func canJump(nums []int) bool {
 
 	return m >= len(nums)-1
 }
+
+func max(x, y int) int {
+	if x > y {
+		return x
+	}
+	return y
+}
